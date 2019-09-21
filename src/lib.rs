@@ -318,7 +318,7 @@ impl<'a> RtpReader<'a> {
             .map(|b| (b[0] as u32) << 24 | (b[1] as u32) << 16 | (b[2] as u32) << 8 | (b[3] as u32))
     }
 
-    fn payload_offset(&self) -> usize {
+    pub fn payload_offset(&self) -> usize {
         let offset = self.csrc_end();
         if self.extension_flag() {
             offset + Self::EXTENSION_HEADER_LEN + self.extension_len()
